@@ -15,57 +15,79 @@ get_header();
     }
 
     // 入力データの取得
-    $panel_capacity = isset($_POST['panel_capacity']) ? (float)$_POST['panel_capacity'] : 0;
-    $construction_cost = isset($_POST['construction_cost']) ? (int)$_POST['construction_cost'] : 0;
-    $unit_cost = isset($_POST['unit_cost']) ? (float)$_POST['unit_cost'] : 0;
+    $installation_area = isset($_POST['txtMenseki']) ? (float)$_POST['txtMenseki'] : 0; // 設置面積
+    $roof_type = isset($_POST['cmbPlace']) ? $_POST['cmbPlace'] : ''; // 屋根形状
+    $unit_cost = isset($_POST['txtTanka']) ? (float)$_POST['txtTanka'] : 0; // 電力料金単価
+    $region = isset($_POST['cmbArea']) ? $_POST['cmbArea'] : '全国'; // 地域（仮: 全国） todo: 仮データ
 
-    // 年間予想発電量と削減費
-    $annual_generation = $panel_capacity * 0.9 * 365 * 24;
+    // 固定データ (Excelの内容を仮設定)
+    $module_per_sqm = 160.0; // 太陽光モジュール1㎡あたり容量 (kW)
+    $module_unit_price = 35000.0; // 太陽光モジュール単価 (円/kW)
+    $roof_pricing = [ // 屋根形状別単価 (仮: Excelデータ)
+        "８８折板屋根" => 1506,
+        "ハゼ式屋根" => 1504,
+        "陸屋式屋根" => 1500,
+        "野立て架台" => 1508,
+        "カーポート" => 1507,
+        "水上架台" => 1510
+    ];
+    $pcs_unit_price = 11000.0; // パワーコンディショナー単価 (円/kW)
+    $annual_solar_factor = 1200; // 地域別日射量係数 (仮: 全国平均値) todo: 仮データ
+
+    // 設置パネル容量 (kW)
+    $panel_capacity = ($installation_area * $module_per_sqm) / 1000;
+
+    // 太陽光モジュール費用
+    $module_cost = $panel_capacity * $module_unit_price;
+
+    // 屋根形状費用
+    $roof_unit_price = $roof_pricing[$roof_type] ?? 0; // 未指定の場合0
+    $roof_cost = $panel_capacity * $roof_unit_price;
+
+    // パワーコンディショナー費用
+    $pcs_cost = $panel_capacity * $pcs_unit_price;
+
+    // 工事費用合計
+    $construction_cost = $module_cost + $roof_cost + $pcs_cost;
+
+    // 年間予想発電量 (kWh)
+    $annual_generation = $panel_capacity * $annual_solar_factor;
+
+    // 年間予想削減費 (円)
     $annual_savings = $annual_generation * $unit_cost;
+
+    // 月間削減費
     $monthly_savings = $annual_savings / 12;
 
-    // 累積削減費と損益分岐点の月を計算
+    // 累積削減費と損益分岐点
     $cumulative_savings = [];
     $months_needed = 0;
-    $max_months = 60; // 表示する月の最大値
+    $max_months = 60; // 最大60ヶ月表示
 
-    // ループして月ごとの累積削減費を計算
     for ($i = 0; $i < $max_months; $i++) {
         $total_savings = ($i + 1) * $monthly_savings;
         $cumulative_savings[] = $total_savings;
 
         if ($total_savings >= $construction_cost && $months_needed === 0) {
-            $months_needed = $i + 1; // 初めて損益分岐点を超えた月を記録
+            $months_needed = $i + 1; // 初回損益分岐点
         }
 
-        // 損益分岐点＋3か月を満たしたらループを終了
         if ($months_needed > 0 && $i >= $months_needed + 2) {
             break;
         }
     }
 
-    // 表示する月数を決定
-    $months_to_display = max(12, $months_needed + 3, count($cumulative_savings));
-    $labels = array_map(function($month) {
-        return ($month + 1) . '月';
-    }, range(0, $months_to_display - 1));
-
-    // JSONエンコードしてJavaScriptに渡す
+    // 結果表示用のフォーマット
+    $formatted_panel_capacity = number_format($panel_capacity, 1);
+    $formatted_construction_cost = number_format($construction_cost);
+    $formatted_annual_generation = number_format($annual_generation, 0);
+    $formatted_annual_savings = number_format($annual_savings, 0);
     $cumulative_savings_json = json_encode($cumulative_savings);
     $construction_cost_json = json_encode($construction_cost);
-    $labels_json = json_encode($labels);
-
-    // 結果表示用に数値を整形（フォーマット）
-    $formatted_panel_capacity = number_format($panel_capacity, 1); // 小数点1桁
-    $formatted_construction_cost = number_format($construction_cost); // カンマ区切り
-    $formatted_annual_generation = number_format($annual_generation, 0); // 発電量の整数値
-    $formatted_annual_savings = number_format($annual_savings, 0); // 削減費の整数値
-
-    // タイトルなどの共通変数
-    $title = '年間削減電気料金シミュレーション';
-    $description = '太陽光システムによる年間削減電気料金のシミュレーション結果を表示します。';
-    ?>
-
+    $labels_json = json_encode(array_map(function($month) {
+        return ($month + 1) . '月';
+    }, range(0, count($cumulative_savings) - 1)));
+?>
 <main>
         <section class="mv">
             <h2><img src="/img/mv_ret.png" alt="太陽光発電料金・発電量 シミュレーション結果" width="100%" height="auto"></h2>
