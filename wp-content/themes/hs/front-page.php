@@ -20,7 +20,8 @@ get_header();
 
 <main>
         <section class="mv">
-            <img src="/img/mv.png" alt="" width="100%" height="auto">
+            <img src="/img/mv.png" alt="" width="100%" height="auto" class="disp_tb_over">
+            <img src="/img/mv_sp.png" alt="" width="100%" height="auto" class="disp_tb_miman">
             <style>
                 .mv .subcatch {
                     background-color: #1E3A6E;
@@ -30,108 +31,15 @@ get_header();
                     font-size: 20px;
                     font-weight: 600;
                 }
+                .mv .subcatch h2 {
+                    color: #fff;
+                }
             </style>
             <div class="subcatch">
                 <h2>株式会社 イトデン エンジニアリングが運営する、太陽光発電に関するシミュレーションサービス</h2>
             </div>
         </section>
         
-        <style>
-            * {
-                color: #3A3A3A;
-                font-family: YuGothic, "Yu Gothic medium", "Hiragino Sans", Meiryo, "sans-serif"
-            }
-            .mv .subcatch {
-                background-color: #1E3A6E;
-                padding: 1em;
-                text-align: center;
-                color: #fff;
-                font-size: 20px;
-                font-weight: 600;
-            }
-            .about {
-                margin-bottom: 40px;
-            }
-            .about .inner {
-                background-color: #FFFFFF;
-                padding-top: 50px;
-                padding-bottom: 50px;
-            }
-            .about .cont {
-                display: flex;
-                justify-content: space-between
-            }
-            .about .cont .left {
-                width: 55%;
-            }
-            .about .cont .left ul {
-                font-size: 22px;
-                margin-bottom: 1em;
-            }
-            .about .cont .left li {
-                color: #1FA2C3;
-                font-weight: 600;
-            }
-            .about .cont .left li::before {
-                content: '●';
-                margin-right: 0.5em;
-            }
-            .about .cont .right {
-                width: 37%;
-            }
-            .about .cont .right img {
-                max-width: 100%;
-            }
-            .about h3 {
-                font-size: 30px;
-                color: #1E3A6E;
-                font-weight: 600;
-                position: relative;
-                margin-bottom: 1em;
-            }
-            .about h3::after {
-                content: '';
-                display: block;
-                width: 30%;
-                height: 2px;
-                background-color: #1E3A6E;
-                margin-top: .5em;
-            }
-            .services {
-                margin-bottom: 40px;
-            }
-            .services h3 {
-                background-color: #1FA2C3;
-                color: #fff;
-                padding: 0.3em 1em;
-                font-size: 30px;
-                font-weight: 600;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-            }
-            .services .text {
-                padding: 1.5em;
-                font-size: 19px;
-                box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);
-            }
-            .services .text p {
-                color: #1FA2C3;
-                margin-bottom: 1em;
-            }
-            .services .text li::before {
-                content: '●';
-                margin-right: 0.5em;
-                color: #1FA2C3
-            }
-            .services .text li {
-                font-size: 25px;
-                font-weight: 600;
-                border-bottom: 2px dashed #C8C8C8;
-            }
-            .run p {
-                margin-bottom: 50px;
-            }
-        </style>
         <section class="about">
             <div class="inner">
                 <div class="cont">
@@ -172,6 +80,9 @@ get_header();
             .run {
                 text-align: center;
             }
+            section.run a {
+                background-color: transparent;
+            }
             .run p {
                 font-size: 24px;
                 font-weight: 500;
@@ -184,7 +95,7 @@ get_header();
         <section class="run">
             <div class="cont">
                 <p>
-                    1分程度の簡単入力ですぐに結果が表示される<br>便利なツールとなっておりますので、ぜひご活用くださいませ。
+                    1分程度の簡単入力ですぐに結果が表示される<br class="disp_tb_over">便利なツールとなっておりますので、ぜひご活用くださいませ。
                 </p>
                 <a href="/simulation/"><img src="/img/btn_run.png" alt="簡単１分！太陽光発電の料金シミュレーションを開始する"></a>
             </div>    

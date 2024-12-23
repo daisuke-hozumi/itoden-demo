@@ -7,13 +7,10 @@
 
 get_header();
 ?>
-    <script src="<?php echo(get_template_directory_uri()) ?>/js/jquery-3.4.1.min.js"></script>
-    <!-- スクロール関連処理 -->
-    <script src="<?php echo(get_template_directory_uri()) ?>/js/jsScroll.js"></script>
-    <script src="jsCheck.js"></script>
     <main>
         <section class="mv">
-            <img src="/img/kasou_mv.png" alt="" width="100%" height="auto">
+            <img src="/img/kasou_mv.png" alt="" width="100%" height="auto" class="disp_tb_over">
+            <img src="/img/kasou_mv_sp.jpg" alt="" width="100%" height="auto" class="disp_tb_miman">
         </section>
         <form action="/simulation/result/" class="cont" method="post" name="frmInput" onsubmit="return funcInputCheck('frmInput')">
             <section class="input">
@@ -77,12 +74,12 @@ get_header();
                                 <td>
                                     <select name="cmbPlace">
                                         <option value="">選択する</option>
-                                        <option value="８８折板屋根">８８折板屋根</option>
-                                        <option value="ハゼ式屋根">ハゼ式屋根</option>
-                                        <option value="陸屋式屋根">陸屋式屋根</option>
-                                        <option value="野立て架台">野立て架台</option>
-                                        <option value="カーポート">カーポート</option>
-                                        <option value="水上架台">水上架台</option>
+                                        <?php
+                                            $rack_pricing = get_field('rack_pricing','option');
+                                            foreach($rack_pricing as $row) {
+                                                echo('<option value="' . $row['roof_type'] . '">' . $row['roof_type'] . '</option>');
+                                            }
+                                        ?>
                                     </select>
                                     <div class="error-hidden err_Place">設置場所の形状を選択してください。</div>
                                 </td>
@@ -167,25 +164,6 @@ get_header();
                     </div>
                 </section>
             </section>
-
-
-
-            <h2 style="font-size:30px; font-weight: 600">テストデータ入力用</h2>
-                <div>
-                <label>設置パネル容量 (kW):</label>
-                <input type="number" name="panel_capacity" step="0.1" required>
-            </div>
-            <div>
-                <label>工事費用 (円):</label>
-                <input type="number" name="construction_cost" required>
-            </div>
-            <div>
-                <label>電力料金単価 (円/kWh):</label>
-                <input type="number" name="unit_cost" step="0.1" required>
-
-            </div>
-
-
 
             <section class="run">
                 <div class="cont">

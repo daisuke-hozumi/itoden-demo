@@ -1069,7 +1069,228 @@ body {
 		padding-bottom: calc(25px - (1024px - 100vw) * 0.0244 );
 	}
 }
-
+* {
+    color: #3A3A3A;
+    font-family: YuGothic, "Yu Gothic medium", "Hiragino Sans", Meiryo, "sans-serif"
+}
+.mv .subcatch {
+    background-color: #1E3A6E;
+    padding: 1em;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+.about {
+    margin-bottom: 40px;
+}
+.about .inner {
+    background-color: #FFFFFF;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.about .cont {
+    display: flex;
+    justify-content: space-between
+}
+.about .cont .left ul {
+    font-size: 22px;
+    margin-bottom: 1em;
+}
+.about .cont .left li {
+    color: #1FA2C3;
+    font-weight: 600;
+}
+.about .cont .left li::before {
+    content: '●';
+    margin-right: 0.5em;
+}
+.about .cont .right img {
+    max-width: 100%;
+}
+.about h3 {
+    font-size: 30px;
+    color: #1E3A6E;
+    font-weight: 600;
+    position: relative;
+    margin-bottom: 1em;
+}
+.about h3::after {
+    content: '';
+    display: block;
+    width: 30%;
+    height: 2px;
+    background-color: #1E3A6E;
+    margin-top: .5em;
+}
+.services {
+    margin-bottom: 40px;
+}
+.services h3 {
+    background-color: #1FA2C3;
+    color: #fff;
+    padding: 0.3em 1em;
+    font-size: 30px;
+    font-weight: 600;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.services .text {
+    padding: 1.5em;
+    font-size: 19px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);
+}
+.services .text p {
+    color: #1FA2C3;
+    margin-bottom: 1em;
+}
+.services .text li::before {
+    content: '●';
+    margin-right: 0.5em;
+    color: #1FA2C3
+}
+.services .text li {
+    font-size: 25px;
+    font-weight: 600;
+    border-bottom: 2px dashed #C8C8C8;
+}
+.run p {
+    margin-bottom: 50px;
+}
+/* エラー時の入力欄のスタイル */
+.error-border {
+    border: 2px solid #E43F24;
+}
+.error-hidden {
+    display: none;
+}
+/* エラーメッセージの初期状態（非表示） */
+.error-visible {
+    display: block;
+    color: #E43F24;
+    font-size: 0.9em;
+    margin-top: 4px;
+    font-weight: 600;
+}
+.sec-input_box {
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+    margin-bottom: 50px;
+}
+.sec-input_box h2 {
+    background-color: #1FA2C3;
+    color: #fff;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.sec-input_box h2 span {
+    font-size: 1.5em;
+    margin-right: 5px;
+    color: #fff;
+}
+.sec-input_box .inner {
+    padding: 35px;
+    text-align: center;
+}
+.sec-input_box .inner .input_box {
+    display: inline-block;
+    background-color: #EEEEEE;
+    padding: 8px 20px;
+    margin-bottom: 30px;
+}
+.sec-input_box .inner .input_box table {
+    width: auto;
+}
+.sec-input_box .inner .input_box table th {
+    padding-right: 20px;
+}
+.sec-input_box .inner .input_box select {
+    padding: 12px 15px;
+}
+.sec-input_box .inner .map_box {
+    background-color: #E8F6F9;
+    padding: 35px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+input[type="text"] {
+    width: 5em!important;
+    text-align: right;
+    margin-right: 13px;
+    padding-right: 7px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+.sec-input_box#box-4 .input_box {
+    width: 100%;
+}
+.sec-input_box#box-4 .flex {
+    justify-content: space-between;
+}
+.sec-input_box#box-4 .right img {
+    width: 100%;
+}
+section.run {
+    margin-top: 50px;
+    text-align: center;
+}
+section.run p {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+section.run img {
+    width: 60%;
+}
+section.run button,section.run a {
+    border: none;
+    background-color: #1FA2C3;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 26px;
+    padding: .7em 1.5em;
+    text-decoration: none;
+    display: inline-block;
+}
+section.run a {
+    background-color: #FEA035;
+}
+.map_box img {
+    width: 100%;
+}
+.sec-input_box .inner .input_box table th {
+    font-weight: 600;
+}
+.results-box {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+.results-box > div {
+    width: 48.5%;
+    margin-bottom: 3%;
+    border: 1px solid #ccc;
+    padding: 0;
+}
+.results-box > div h3 {
+    background-color: #1FA2C3;
+    color: #fff;
+    font-weight: 600;
+    padding: 5px;
+}
+.results-box > div p {
+    font-size: 2em;
+    font-weight: 600;
+    padding: 1em;
+}
 /* allsize end */
 /*===========================================
  以下、メディアクエリ
@@ -1119,7 +1340,7 @@ body {
 	}
 
 	.header_link_sp img {
-		height: 38px;
+		height: 28px;
 		width: auto!important;
 		line-height: 45px;
 	}
@@ -1129,7 +1350,7 @@ body {
 		display:block;
 		position: fixed;
 		left:8px;
-		top:3px;
+		top:14px;
 		height: 38px;
 		z-index: 99;
 	}
@@ -1152,7 +1373,7 @@ body {
 	 　header_link_spにtransitionを付与し、また、.checked:checked  ~ .header_link_spに対してopacityを0でふわっと消える
 	----------------*/
     #header_sp {
-    background-color: #000000;
+    background-color: #fff;
     position: fixed;
     top: 0;
     z-index: 99;
@@ -1237,7 +1458,7 @@ body {
         font-size: 10px;
         text-align: center;
         cursor: pointer;
-        background-color: #313131;
+        background-color: #04235D;
         z-index: 101;
     }
 
@@ -1405,6 +1626,56 @@ body {
         width: 250px;
         margin-bottom: 20px;
     }
+    .sec-input_box#box-4 .flex {
+        flex-direction: column-reverse;
+    }
+    .sec-input_box#box-4 .flex .right {
+        margin-bottom: 35px;
+    }
+    .about .cont {
+        flex-wrap: wrap;
+    }
+    .about h3 {
+        font-size: 19px;
+    }
+    .about .cont .left ul {
+        font-size: 18px;
+    }
+    .about .cont .left p {
+        margin-bottom: 25px;
+    }
+    .services h3 {
+        font-size: 24px;
+    }
+    .services .text li {
+        font-size: 18px;
+        text-indent: -1.5em;
+        padding-left: 1.5em;
+    }
+    section.run p {
+        font-size: 20px;
+    }
+    section.run a {
+        padding: 0;
+    }
+    section.run img {
+        width: 100%;
+    }
+    .sec-input_box .inner .input_box table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .sec-input_box .inner .input_box table th,.sec-input_box .inner .input_box table td {
+        display: block;
+        text-align: center;
+    }
+    .sec-input_box .inner {
+        padding: 20px;
+    }
+    .results-box > div p {
+        font-size: 1.3em;
+        padding: 0.3em;
+    }
 	/* 767down end */
 }
 /*===========================
@@ -1480,6 +1751,30 @@ body {
         -o-flex-wrap: wrap;
         flex-wrap: wrap;
     }
+    .about .cont .left {
+        width: 55%;
+    }
+    .about .cont .right {
+        width: 37%;
+    }
+    .sec-input_box#box-4 .left {
+        width: 45%;
+        padding-left: 40px;
+    }
+    .sec-input_box#box-4 .left table {
+        width: 100%;
+    }
+    .sec-input_box#box-4 .left th {
+        width: 40%;
+        text-align: center;
+    }
+    .sec-input_box#box-4 .left td {
+        width: 60%;
+        text-align: left;
+    }
+    .sec-input_box#box-4 .right {
+        width: 49%;
+    }
 	/* 768over end */
 }
 /*===========================
@@ -1534,6 +1829,50 @@ body {
         -o-flex-wrap: wrap;
         flex-wrap: wrap;
 	}
+     .header_pc {
+        display: flex;
+        justify-content: space-between
+    }
+    .header_pc .left {
+        width: 45%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-left: 15px;
+    }
+    .header_pc .left img {
+        width: 55%;
+    }
+    .header_pc .right {
+        width: 55%;
+        display: flex;
+    }
+    .header_pc .right nav {
+        width: 70%;
+    }
+    .header_pc .right nav ul {
+        display: flex;
+        justify-content: space-between;
+    }
+    .header_pc .right nav ul li {
+        width: 33.31%;
+    }
+    .header_pc .right nav ul li img {
+        width: 100%;
+    }
+    .header_pc .right .tel_box {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        text-align: center;
+    }
+    .header_pc .right .tel_box p {
+        font-size: 15px;
+        font-weight: 600;
+        color: #AAAAAA;
+    }
 	/* 1024over end */
 }
 /*===========================
